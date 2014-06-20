@@ -14,16 +14,23 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-default: &default
-  adapter: postgresql
-  encoding: unicode
+#default: &default
+  #adapter: postgresql
+  #encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: 5
+  #pool: 5
 
 development:
-  <<: *default
-  database: k2p_development
+  #<<: *default
+  #database: k2p_development
+
+  adapter: postgresql
+  encoding : utf-8
+  database: kprf
+  host : 127.0.0.1
+  username : postgres
+  password : postgres
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -56,8 +63,15 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: k2p_test
+  #<<: *default
+  #database: k2p_test
+
+  adapter: postgresql
+  encoding : utf-8
+  database: kprf
+  host : 127.0.0.1
+  username : postgres
+  password : postgres
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -79,7 +93,14 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: k2p_production
-  username: k2p
-  password: <%= ENV['K2P_DATABASE_PASSWORD'] %>
+#  <<: *default
+#  database: k2p_production
+#  username: k2p
+#  password: <%= ENV['K2P_DATABASE_PASSWORD'] %>
+
+  adapter: postgresql
+  encoding : utf-8
+  database: kprf
+  host : 127.0.0.1
+  username : postgres
+  password : postgres

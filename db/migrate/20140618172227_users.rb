@@ -21,8 +21,8 @@ class Users < ActiveRecord::Migration
       t.uuid :status_id
       t.string :remember_me_key
       t.string :reset_password_code
-      t.uuid :o_uid
       t.string :session_token
+      t.uuid :o_uid
       t.uuid :site_id
       t.uuid :note_id
       t.uuid :created_by
