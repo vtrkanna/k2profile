@@ -1,0 +1,13 @@
+<!-- Footer -->
+<%= content_tag (:div), :class => "footer" do %>
+    <%= content_tag (:div), :class => "container" do %>
+        <%= content_tag (:p), :class => "pull-left" do %>
+            <%= link_to("www.vtrkanna.wordpress.com", "http://vtrkanna@wordpress.com", :target => "_blank") %>
+        <% end %>
+        <%= content_tag (:p), :class => "pull-right" do %>
+            <a href="#myModal" role="button" data-toggle="modal"> <i class="icon-mail"></i>
+              CONTACT</a>
+        <% end %>
+    <% end %>
+<% end %>
+<!-- Contact form in Modal -->

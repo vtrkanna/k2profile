@@ -2,13 +2,25 @@
 <html lang="en">
 <%= content_tag (:head) do %>
     <%= content_tag(:title, "kanna") %>
-    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 <%#= stylesheet_link_tag 'bootstrap', 'bootstrap-responsive', 'style', 'fontello', 'temp_last' %>
 <% end %>
 <%= content_tag (:body) do %>
-    <%= content_tag (:div), :class =>"navbar" do %>
-        <%= content_tag (:div), :class => "navbar-inner" do %>
-        <% end  %>
-    <% end  %>
+<%= render 'layouts/header' %>
+    <!--Profile container-->
+    <%= yield %>
+    <!--END: Profile container-->
+    <%= render "layouts/social" %>
+    <%= render "layouts/footer" %>
+    <%= render "layouts/contact" %>
+    <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!--<script src="bootstrap.min.js"></script>-->
+    <script>
+        $('#myModal').modal('hidden')
+    </script>
+
 <% end %>
 </html>
