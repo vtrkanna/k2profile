@@ -10,7 +10,15 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
     <link href="font/css/fontello.css" rel="stylesheet">
+    <link href="css/last_modif.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/style_modif.css"/>
+
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -27,7 +35,7 @@
             </a>
             <ul class="nav nav-collapse pull-right">
                 <li><a href="index.html" class="active"><i class="icon-user"></i> Profile</a></li>
-                <li><a href="skills.html"><i class="icon-trophy"></i> Skills</a></li>
+                <li><a href="#modal" id="modal_trigger" ><i class="icon-trophy"></i> Skills</a></li>
                 <li><a href="work.html"><i class="icon-picture"></i> Work</a></li>
                 <li><a href="resume.html"><i class="icon-doc-text"></i> Resume</a></li>
             </ul>
@@ -70,7 +78,10 @@
 <!-- Footer -->
 <div class="footer">
     <div class="container">
-        <p class="pull-left"><a href="http://vtrkanna@wordpress.com">www.vtrkanna.wordpress.com</a></p>
+        <p class="pull-left">
+            <a id="modal_trigger" href="#modal" >Click here to Login or register</a>
+            <!--<a href="http://vtrkanna@wordpress.com">www.vtrkanna.wordpress.com</a>-->
+        </p>
 
         <p class="pull-right"><a href="#myModal" role="button" data-toggle="modal"> <i class="icon-mail"></i>
             CONTACT</a></p>
@@ -78,6 +89,8 @@
 </div>
 <!-- Contact form in Modal -->
 <!-- Modal -->
+
+<!--Modal Container (Popup Box)-->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -94,6 +107,132 @@
         </form>
     </div>
 </div>
+
+<!--Login popup-->
+
+<div id="modal" class="popupContainer" style="display:none;">
+    <header class="popupHeader">
+        <span class="header_title">Login</span>
+        <span class="modal_close"><i class="fa fa-times"></i></span>
+    </header>
+
+    <section class="popupBody">
+        <! -- Here Goes all the Login and signup Forms -->
+        <div class="social_login">
+            <div class="clearfix">
+                <a class="social_box fb" href="#">
+                    <span class="icon"><i class="fa fa-facebook"></i></span>
+                    <span class="icon_title">Connect with Facebook</span>
+                </a>
+                <a class="social_box google" href="#">
+                    <span class="icon"><i class="fa fa-google-plus"></i></span>
+                    <span class= "icon_title">Connect with Google</span>
+                </a>
+            </div>
+
+            <div class="centeredText">
+                <span>Or use your Email address</span>
+            </div>
+
+            <div class="action_btns">
+                <div class="one_half">
+                    <a class="btn" href="#" id="login_form" name="login_form">Login</a>
+                </div>
+
+                <div class="one_half last">
+                    <a class="btn" href="#" id="register_form" name= "register_form">Sign up</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="user_login">
+            <form>
+                <label>Email / Username</label> <input type="text"><br>
+                <label>Password</label> <input type="password"><br>
+
+                <div class="checkbox">
+                    <input id="remember" type="checkbox"> <label for=
+                                                                         "remember">Remember me on this computer</label>
+                </div>
+
+                <div class="action_btns">
+                    <div class="one_half">
+                        <a class="btn back_btn" href="#">Back</a>
+                    </div>
+
+                    <div class="one_half last">
+                        <a class="btn btn_red" href="#">Login</a>
+                    </div>
+                </div>
+            </form>
+
+            <a class="forgot_password" href="#">Forgot password?</a>
+        </div>
+
+        <div class="user_register">
+            <form>
+                <label>Full Name</label> <input type="text"><br>
+                <label>Email Address</label> <input type="email"><br>
+                <label>Password</label> <input type="password"><br>
+
+                <div class="checkbox">
+                    <input id="send_updates" type="checkbox"> <label for=
+                                                                             "send_updates">Send me occasional email
+                    updates</label>
+                </div>
+
+                <div class="action_btns">
+                    <div class="one_half">
+                        <a class="btn back_btn" href="#">Back</a>
+                    </div>
+
+                    <div class="one_half last">
+                        <a class="btn btn_red" href="#">Register</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--Modal Container (Popup Box)-->
+
+        <script type="text/javascript">
+            $("#modal_trigger").leanModal({top: 200, overlay: 0.6, closeButton: ".modal_close" });
+
+            $(function () {
+                // Calling Login Form
+                $("#login_form").click(function () {
+                    $(".social_login").hide();
+                    $(".user_login").show();
+                    return false;
+                });
+
+                // Calling Register Form
+                $("#register_form").click(function () {
+                    $(".social_login").hide();
+                    $(".user_register").show();
+                    $(".header_title").text('Register');
+                    return false;
+                });
+
+                // Going back to Social Forms
+                $(".back_btn").click(function () {
+                    $(".user_login").hide();
+                    $(".user_register").hide();
+                    $(".social_login").show();
+                    $(".header_title").text('Login');
+                    return false;
+                });
+
+            })
+
+        </script>
+
+        <! -- Here Goes all the Login and signup Forms -->
+    </section>
+</div>
+
+<!--Login popup-->
+
 <!-- Scripts -->
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
